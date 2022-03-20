@@ -1,0 +1,4 @@
+**/*.generated.ts
+
+node_modules
+coverage

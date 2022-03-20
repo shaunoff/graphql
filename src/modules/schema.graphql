@@ -1,0 +1,46 @@
+type Auth {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type AuthError {
+  message: String!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+}
+
+union AuthPayload = Auth | AuthError
+
+type Mutation {
+  refreshTokens(refreshToken: String!): AuthPayload!
+  signIn(data: SignInInput!): AuthPayload!
+  signUp(data: SignupInput!): AuthPayload!
+}
+
+type Query {
+  user(id: String!): User
+  users: [User]
+}
+
+interface Error {
+  message: String!
+}
+
+type User {
+  email: String!
+  id: ID!
+  role: String!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

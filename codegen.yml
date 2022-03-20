@@ -1,0 +1,9 @@
+schema: ['src/modules/**/*.graphql']
+documents: ['src/**/*.ts']
+errorsOnly: true
+generates:
+  src/modules/types.generated.ts:
+    plugins:
+      - '@graphql-codegen/typescript'
+      - '@graphql-codegen/typescript-resolvers'
+      - '@graphql-codegen/typescript-operations'

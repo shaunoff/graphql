@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  password     String
+  role         String  @default("user")
+  // profile      Profile?
+  refreshToken String? @unique
+}
+
+model Day {
+  id                   Int     @id
+  mmyyyy               String  @db.Char(6)
+  mmddyyyy             String  @db.Char(8)
+  actualDate           String
+  dayName              String  @db.VarChar(9)
+  dayOfMonth           Int
+  dayOfYear            Int
+  daySuffix            String  @db.VarChar(4)
+  isWeekend            Boolean
+  monthName            String  @db.VarChar(9)
+  monthNameAbbreviated String  @db.Char(3)
+  monthOfYear          Int
+  unix                 BigInt
+  weekOfYear           Int
+  year                 Int
+  dayOfWeek            Int
+}

@@ -1,0 +1,8 @@
+type Auth {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type AuthError {
+  message: String!
+}

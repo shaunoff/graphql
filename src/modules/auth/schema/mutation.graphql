@@ -1,0 +1,23 @@
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  # profile: ProfileInput!
+}
+
+# input ProfileInput {
+#   firstName: String!
+#   lastName: String!
+# }
+
+union AuthPayload = Auth | AuthError
+
+type Mutation {
+  refreshTokens(refreshToken: String!): AuthPayload!
+  signIn(data: SignInInput!): AuthPayload!
+  signUp(data: SignupInput!): AuthPayload!
+}
