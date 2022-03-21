@@ -3,7 +3,7 @@ const config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleDirectories: ['node_modules', 'src'],
-  //setupFilesAfterEnv: ['<rootDir>/src/tests/jestSetup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/tests/jestSetup.ts'],
 }
 
 export default config

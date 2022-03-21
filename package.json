@@ -8,12 +8,12 @@
   },
   "scripts": {
     "lint": "yarn run eslint . --ext .graphql,.ts,.tsx",
-    "test:setup": "dotenv -e .env.test -- npx prisma migrate reset --force",
-    "test:run": "dotenv -e .env.test -- jest --runInBand --coverage",
-    "test": "yarn test:setup && yarn test:run",
+    "test:setup": "npx prisma migrate reset --force",
+    "test:run": "jest --runInBand --coverage",
+    "test": "cross-env NODE_ENV=development yarn test:setup && yarn test:run",
     "start": "ts-node-dev --files src/index.ts",
     "generate": "graphql-codegen",
-    "dev": "concurrently \"ts-node-dev --files src/index.ts\" \"yarn generate --watch\"",
+    "dev": "cross-env NODE_ENV=development concurrently \"ts-node-dev --files src/index.ts\" \"yarn generate --watch\"",
     "prepare": "husky install"
   },
   "author": "",

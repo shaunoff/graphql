@@ -1,6 +1,10 @@
 import createServer from './config/createServer'
+import * as dotenv from 'dotenv'
 
-console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV !== 'production') {
+  console.log('kkk', process.env.NODE_ENV)
+  dotenv.config()
+}
 
 const port = process.env.PORT || '4000'
 
